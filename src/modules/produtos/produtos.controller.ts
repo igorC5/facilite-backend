@@ -1,5 +1,6 @@
 import { Body, Controller, Post, Get, Delete, Param, Put } from '@nestjs/common';
 import { ProdutoService } from './produtos.service';
+import { CriarProdutoDto } from './dto/criar-produto.dto';
 
 @Controller('produtos')
 export class ProdutoController {
@@ -17,9 +18,12 @@ export class ProdutoController {
 
   @Post()
   async criarProduto(
-    @Body() body: { nome: string; preco_venda: number },
+    @Body() body: CriarProdutoDto,
   ) {
-    return this.produtoService.criarProduto(body);
+    return {
+      data: await this.produtoService.criarProduto(body),
+      message: 'sucesso',
+    };
   }
 
   @Put(':id')
@@ -27,8 +31,7 @@ export class ProdutoController {
     @Param('id') id: number,
     @Body() body: { nome: string; preco_venda: number }
   ) {
-    console.log(id);
-    console.log(body);
+
     return this.produtoService.atualizarProduto(Number(id), body);
   }
 

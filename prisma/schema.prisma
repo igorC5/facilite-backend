@@ -4,11 +4,21 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = env("DATABASE_URL")
 }
 
 model Produto {
   id     Int     @id @default(autoincrement())
   nome   String
   preco_venda Float
+  ncm       String
+  unidade   String
+}
+
+model Cliente {
+
+}
+
+model Fornecedor {
+  
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/infra/prisma/prisma.service';
+import { CriarProdutoDto } from './dto/criar-produto.dto';
 
 @Injectable()
 export class ProdutoService {
@@ -15,7 +16,7 @@ export class ProdutoService {
     });
   }
 
-  async criarProduto(data: { nome: string; preco_venda: number }){
+  async criarProduto(data: CriarProdutoDto){
     return this.prisma.produto.create({
       data,
     });
