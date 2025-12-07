@@ -15,10 +15,10 @@ model Produto {
   unidade   String
 }
 
-model Cliente {
+// model Cliente {
 
-}
+// }
 
-model Fornecedor {
+// model Fornecedor {
   
-}
+// }

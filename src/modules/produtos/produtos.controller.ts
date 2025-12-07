@@ -32,7 +32,10 @@ export class ProdutoController {
     @Body() body: { nome: string; preco_venda: number }
   ) {
 
-    return this.produtoService.atualizarProduto(Number(id), body);
+    return {
+      data: await this.produtoService.atualizarProduto(Number(id), body),
+      message: 'sucesso',
+    }
   }
 
   @Delete(':id')
